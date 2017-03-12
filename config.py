@@ -1,0 +1,4 @@
+WTF_CSRF_ENABLED = True
+SECRET_KEY = 'you-will-never-guess'
+TOKEN_VALIDITY = 3600
+DEBUG_MODE = True

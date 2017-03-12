@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+	    <br>
+
+	    <div class="jumbotron">
+	        <h1>Hello this is the index page!</h1>
+	        <p class="lead"></p>
+	        <p><a class="btn btn-lg btn-success" href="showSignUp" role="button" onclick = "sayHello()">
+	        	Say Hello</a>
+	        </p>
+	    </div>
+
+		{% if students %}
+	    <table class="table">
+			<thead class="thead-default">
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Grade</th>
+					<th>Batch</th>
+					<th>Fee</th>
+					<th>Fee paid</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for student in students %}
+				<tr>
+					<th scope="row">{{ student.roll_no }}</th>
+					<td>{{ student.name }}</td>
+					<td>{{ student.grade }}</td>
+					<td>{{ student.batch }}</td>
+					<td>{{ student.fee }}</td>
+					<td>{{ student.installments }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+			No student data found!
+		{% endif %}
+
+	</div>
+{% endblock %}
