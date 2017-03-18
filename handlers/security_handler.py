@@ -1,5 +1,5 @@
 from itsdangerous import (TimedJSONWebSignatureSerializer as JWT, BadSignature, SignatureExpired)
-from common_error_codes import *
+from common.common_error_codes import *
 
 import user_handler
 

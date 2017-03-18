@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify, make_response, render_template, flash
 from flask_httpauth import HTTPTokenAuth, HTTPBasicAuth
 
 from mongo_config import setup_mongo_connection
-from common_error_codes import *
-from common_util import JSONEncode
-import http_codes
+from common.common_error_codes import *
+from common.common_util import JSONEncode
+from common import http_codes
 from handlers import student_handler
 from handlers import user_handler
 from handlers import security_handler

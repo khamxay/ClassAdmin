@@ -1,4 +1,4 @@
-from common_error_codes import *
+from common.common_error_codes import *
 import mongo_config
 
 def get_user_by_username(username):
