@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, make_response, render_template, flash, redirect, g
 from flask_httpauth import HTTPTokenAuth, HTTPBasicAuth
 
-from mongo_config import setup_mongo_connection
+from config.mongo_config import setup_mongo_connection
 from common.common_error_codes import *
 from common.common_util import JSONEncode
 from common import http_codes
@@ -18,7 +18,7 @@ auth = HTTPTokenAuth('Bearer')
 bauth = HTTPBasicAuth()
 
 setup_mongo_connection(app)
-app.config.from_object('config')
+app.config.from_object('config.config')
 security_handler.initialize_token_serializer(app.config)
 
 
