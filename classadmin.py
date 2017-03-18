@@ -5,9 +5,9 @@ from mongo_config import setup_mongo_connection
 from common_error_codes import *
 from common_util import JSONEncode
 import http_codes
-import student_handler
-import user_handler
-import security_handler
+from handlers import student_handler
+from handlers import user_handler
+from handlers import security_handler
 from forms import LoginForm
 
 project_name = "classadmin"
