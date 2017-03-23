@@ -10,9 +10,9 @@ This is a simple CRUD system developed using python flask and mongodb. It expose
 
 Open the `config/config.py` and `config/mongo_config.py` and change the settings according to your environment/requirement.
 
-Run the script `add_sample_data.py` (coming soon!) to add sample user and records into the database.
+Run the script `sample_data.py add` to add sample user and records into the database.
 ```
-python add_sample_data.py
+python sample_data.py add
 ```
 
 Run the script classadmin.py. This will start flask's built in server and start listening on localhost:5000
