@@ -137,6 +137,10 @@ def index():
 	students = student_handler.get_students({})
 	return render_template('index.html', students = students)
 
+@app.route("/test")
+def test_api():
+    return "Hello World!"
+
 '''# GET/POST /classadmin/login
 @app.route("/" + project_name + "/login", methods=['GET', 'POST'])
 def login():
