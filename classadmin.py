@@ -152,5 +152,5 @@ def login():
 	return render_template('login.html', title='Sign In', form=form)'''
 
 
-#if __name__ == "__main__":
-#	app.run(debug=app.config['DEBUG_MODE'])
+if __name__ == "__main__":
+	app.run(debug=app.config['DEBUG_MODE'])

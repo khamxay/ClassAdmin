@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from config.mongo_config import MONGO_URI, MONGO_DBNAME
 import sys
+import os
 
 sample_student_1 = {
 	"fee" : 7000,
@@ -60,7 +61,11 @@ sample_user_1 = {
 }
 
 def setup_db_connection():
-	client = MongoClient(MONGO_URI)
+	MONGO_URL = os.environ.get('MONGO_URL')
+	if not MONGO_URL:
+		MONGO_URL = MONGO_URI
+
+	client = MongoClient(MONGO_URL)
 	db = client[MONGO_DBNAME]
 	return db
 
