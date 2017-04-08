@@ -14,7 +14,7 @@ def setup_mongo_connection(app):
 
 	MONGO_URL = os.environ.get('MONGO_URL')
 	if not MONGO_URL:
-		MONGO_URL = MONGO_URI;
+		MONGO_URL = MONGO_URI
 
 	app.config['MONGO_DBNAME'] = MONGO_DBNAME
 	app.config['MONGO_URI'] = MONGO_URL
