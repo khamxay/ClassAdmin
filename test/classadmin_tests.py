@@ -1,9 +1,11 @@
+from base64 import b64encode
 import os
 import classadmin
 import unittest
 import tempfile
 import sample_data
 import config
+import json
 
 class ClassadminTestCase(unittest.TestCase):
 
@@ -13,17 +15,25 @@ class ClassadminTestCase(unittest.TestCase):
         classadmin.app.config['TESTING'] = True
         sample_data.add_data()
         self.app = classadmin.app.test_client()
-        #with classadmin.app.app_context():
-        #    classadmin.setup_mongo_connection(self.app)
+
+    def login(self):
+        b_auth_token = "Basic " + b64encode(sample_data.sample_user_1["username"] + ":" + sample_data.sample_user_1["password"])
+        headers = {"Authorization": b_auth_token}
+        rv = self.app.post("/classadmin/api/login", headers = headers)
+        rv = json.loads(rv.get_data())
+        return rv["token"]
 
     def test_get_students(self):
-        rv = self.app.get("/test")
-        print(rv.get_data())
+        token = self.login()
+        headers = {"Authorization": "Bearer " + token}
+        rv = self.app.get("/classadmin/api/students", headers = headers)
+        data = rv.get_data()
+        assert "Sherlock Holmes" in data
+        assert "James Moriarty" in data
+        assert "John Watson" in data
 
     def tearDown(self):
         sample_data.delete_data()
-        #os.close(self.db_fd)
-        #os.unlink(flaskr.app.config['DATABASE'])
 
 if __name__ == '__main__':
     unittest.main()
